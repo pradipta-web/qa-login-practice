@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Practice - Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f3f4f6; display:grid; place-items:center; min-height:100vh; margin:0; }
+    .card { width:340px; background:white; padding:28px; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,.1); }
+    h1 { margin-top:0; }
+    label { display:block; margin:14px 0 6px; }
+    input { width:100%; box-sizing:border-box; padding:10px; border:1px solid #ccc; border-radius:8px; }
+    button { width:100%; margin-top:18px; padding:11px; border:0; border-radius:8px; background:#2563eb; color:white; cursor:pointer; }
+    #message { margin-top:14px; min-height:20px; }
+    .hint { color:#666; font-size:13px; margin-top:18px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text">
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password">
+
+      <button type="submit">Login</button>
+      <div id="message"></div>
+    </form>
+    <p class="hint">Akun latihan: qauser / QATest123</p>
+  </main>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      // Intentional practice bugs:
+      // 1. Empty username/password is not validated.
+      // 2. Wrong password still produces a success message.
+      if (username === "qauser") {
+        message.textContent = "Login berhasil!";
+        message.style.color = "green";
+      } else {
+        message.textContent = "Username atau password salah.";
+        message.style.color = "crimson";
+      }
+    });
+  </script>
+</body>
+</html>
